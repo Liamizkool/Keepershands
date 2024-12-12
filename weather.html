@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Goalkeeping clinic with coaching tips, weather updates, and a contact form.">
+    <meta name="keywords" content="goalkeeping, coaching tips, weather updates, contact form">
+    <meta name="author" content="KeepersHands">
+    <title>Weather | KeepersHands</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Stormclouds.jpg/250px-Stormclouds.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .weather-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .weather-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .weather-container input,
+        .weather-container button {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .weather-container input {
+            width: 80%;
+        }
+
+        .weather-container button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .weather-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .weather-results {
+            margin-top: 20px;
+            color: #000; /* Change text to black for better readability */
+            background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+            padding: 15px; /* Add some padding for better spacing */
+            border-radius: 8px; /* Rounded corners for aesthetics */
+        }
+
+        .weather-results h3 {
+            color: #333; /* Slightly darker header color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Weather Updates</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coaching.html">Coaching Tips</a></li>
+                <li><a href="weather.html">Weather</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="weather-container">
+            <h2>Check the Weather</h2>
+            <button id="use-location">Use Current Location</button>
+            <div id="weather-container" class="weather-results"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 KeepersHands. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const weatherContainer = document.getElementById('weather-container');
+            const useLocationBtn = document.getElementById('use-location');
+
+            useLocationBtn.addEventListener('click', () => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.current_weather) {
+                                    const { temperature, windspeed } = data.current_weather;
+                                    weatherContainer.innerHTML = `
+                                        <h3>Current Weather</h3>
+                                        <p><strong>Temperature:</strong> ${temperature}°C</p>
+                                        <p><strong>Wind Speed:</strong> ${windspeed} km/h</p>
+                                    `;
+                                } else {
+                                    weatherContainer.innerHTML = `<p>Unable to fetch weather data.</p>`;
+                                }
+                            })
+                            .catch(() => {
+                                weatherContainer.innerHTML = `<p>Error fetching weather data.</p>`;
+                            });
+                    }, () => {
+                        weatherContainer.innerHTML = `<p>Geolocation access denied.</p>`;
+                    });
+                } else {
+                    weatherContainer.innerHTML = `<p>Geolocation is not supported by your browser.</p>`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

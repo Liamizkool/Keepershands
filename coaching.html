@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Goalkeeping tips from the best goalkeepers in the world.">
+    <meta name="keywords" content="goalkeeping tips, Neuer, Buffon, Solo, Becker, Ter Stegen, Martinez">
+    <title>Coaching Tips | KeepersHands</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpapers.com/images/hd/dynamic-goalkeeper-in-action-0u09xqfxdhqwzr7s.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .filter-section {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .filter-section input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .goalkeeper-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .goalkeeper-card {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .goalkeeper-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .goalkeeper-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .goalkeeper-card iframe {
+            margin-top: 10px;
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Goalkeeping Coaching Tips</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coaching.html">Coaching Tips</a></li>
+                <li><a href="weather.html">Weather</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="filter-section">
+            <input type="text" id="goalkeeper-filter" placeholder="Search for a goalkeeper...">
+        </section>
+
+        <section class="goalkeeper-container" id="goalkeeper-container">
+            <div class="goalkeeper-card" data-name="Manuel Neuer">
+                <h3>Manuel Neuer</h3>
+                <p>"Positioning is key to simplifying saves."</p>
+                <p>"I see myself as both a defender and an attacker."</p>
+                <iframe src="https://www.youtube.com/embed/-pMOqJM-t8M?si=WIXuilHytG2Y_ryr" title="Manuel Neuer Tips"></iframe>
+            </div>
+            <div class="goalkeeper-card" data-name="Gianluigi Buffon">
+                <h3>Gianluigi Buffon</h3>
+                <p>"Technique is nothing without anticipation."</p>
+                <p>"Stay calm under pressure."</p>
+                <iframe src="https://www.youtube.com/embed/uMvm0PPHO-8?si=aEgUnZZIEQq2CYD8" title="Gianluigi Buffon Tips"></iframe>
+            </div>
+            <div class="goalkeeper-card" data-name="Hope Solo">
+                <h3>Hope Solo</h3>
+                <p>"Confidence and communication are key."</p>
+                <p>"Take calculated risks."</p>
+                <iframe src="https://www.youtube.com/embed/7W7LbFwDjPU?si=cGIE6HriYVrsup5j" title="Hope Solo Tips"></iframe>
+            </div>
+            <div class="goalkeeper-card" data-name="Alisson Becker">
+                <h3>Alisson Becker</h3>
+                <p>"A calm mind leads to better decisions."</p>
+                <p>"Consistency is the secret of success."</p>
+                <iframe src="https://www.youtube.com/embed/KExo16YM5hw" title="Alisson Becker Tips"></iframe>
+            </div>
+            <div class="goalkeeper-card" data-name="Marc-André ter Stegen">
+                <h3>Marc-André ter Stegen</h3>
+                <p>"Anticipate the attacker's next move."</p>
+                <p>"Use your reflexes to their maximum potential."</p>
+                <iframe src="https://www.youtube.com/embed/h8M_gBQ1ZfI?si=vHPeXS-VvV0afr60" title="Ter Stegen Tips"></iframe>
+            </div>
+            <div class="goalkeeper-card" data-name="Emiliano Martínez">
+                <h3>Emiliano Martínez</h3>
+                <p>"Mind games are part of a goalkeeper's toolkit."</p>
+                <p>"Stay confident even under pressure."</p>
+                <iframe src="https://www.youtube.com/embed/pGDUUt1pnSc?si=iqUEgB5mMRZfl5zR" title="Emiliano Martínez Tips"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 KeepersHands. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('goalkeeper-filter').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.goalkeeper-card');
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

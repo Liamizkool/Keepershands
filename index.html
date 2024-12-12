@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to KeepersHands - Your ultimate goalkeeping resource">
+    <meta name="keywords" content="goalkeeping, coaching, tips, goalkeeper gloves, training">
+    <title>KeepersHands Goalkeeping Clinic</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        header {
+            background: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .subsection {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .subsection h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: white;
+            background: #007BFF;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .links a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://i.dailymail.co.uk/1s/2019/06/02/21/14273830-0-image-a-27_1559506047626.jpg');"></div>
+        <div class="slide" style="background-image: url('https://i2-prod.birminghammail.co.uk/incoming/article26374377.ece/ALTERNATES/s1200c/1_JS286505456.jpg');"></div>
+        <div class="slide" style="background-image: url('https://s.yimg.com/ny/api/res/1.2/1xYIJa1joAFskX_Z4DGKkg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2OQ--/https://media.zenfs.com/en/football_italia_articles_132/d0938e1b4222b276bf5c6e41b71a8ffb');"></div>
+    </div>
+
+    <header>
+        <h1>Welcome to KeepersHands</h1>
+        <p>Your ultimate goalkeeping resource for training, tips, and gear.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coaching.html">Coaching Tips</a></li>
+                <li><a href="weather.html">Weather</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="subsection">
+            <h2>About Us</h2>
+            <p>At KeepersHands, we are dedicated to providing goalkeepers of all levels with the resources they need to excel. Whether you're a beginner or a professional, our coaching tips, real-time weather updates, and curated gear recommendations will help you take your game to the next level.</p>
+        </section>
+
+        <section class="subsection">
+            <h2>Recommended Goalkeeper Gloves</h2>
+            <p>Explore the best gloves to enhance your performance:</p>
+            <div class="links">
+                <a href="https://www.adidas.com/us/goalkeeper_gloves" target="_blank">Adidas</a>
+                <a href="https://www.nike.com/w/goalkeeper-gloves-37eefznik1" target="_blank">Nike</a>
+                <a href="https://www.pumastore.com/goalkeeper-gloves" target="_blank">Puma</a>
+                <a href="https://www.uhlsport.com/en/goalkeeper-gloves" target="_blank">Uhlsport</a>
+                <a href="https://www.reusch.com/us/goalkeeping" target="_blank">Reusch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 KeepersHands. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            setInterval(nextSlide, 3000);
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
